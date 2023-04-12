@@ -1,7 +1,7 @@
-#include <Ultrasonic.h>
+//#include <Ultrasonic.h>
 #include <OLED_I2C.h>
 
-Ultrasonic sonik_exe(9, 10); //trig , echo
+// Ultrasonic sonik_exe(9, 10); //trig , echo
 OLED Z(SDA, SCL);
 char give_me = ' '; 
 byte led = 13;
@@ -28,8 +28,8 @@ int f2 = A0;
 int f2_D = 0;
 byte perfar = 12;
 byte far = 10;
-double pin_knop = 11;
-double data_knop = 0;
+
+byte bep = 2;
 
 int exe = 1;
 
@@ -42,28 +42,12 @@ void setup()
   pinMode(enA, OUTPUT);
   pinMode(enB, OUTPUT);
   pinMode(f1, INPUT);
-  pinMode(pin_knop, INPUT);
- // pinMode(f2, INPUT);
+  pinMode(f2, INPUT);
   pinMode(perfar, 1);
   pinMode(far, 1);
+  pinMode(bep, OUTPUT);
+  
   Serial.begin(9600);
-  Z.begin();
-  Z.setFont(RusFont);
-  Z.clrScr();
-  Z.print("Ghbdtn", 5, 20);
-  Z.update();
-  delay(600);
-  Z.print("Vjq drk.xbntkm!", 5, 30);
-  Z.update();
-  delay(600);
-  Z.setFont(SmallFont);
-  
-  Z.print("(:", 5, 40);
-  
-  Z.update();
-  delay(3000);
-  Z.clrScr();
-  
   
   delay(1500);
   Serial.println("Conected!");
@@ -146,6 +130,18 @@ void loop()
       
       case '/':
         digitalWrite(far, 1);      
+      break;
+
+      case '#':
+        digitalWrite(bep, 1);      
+      break;
+      
+      case '_':
+        digitalWrite(bep, 0);
+        //...
+        //...
+        //...
+        //...      
       break;
     }
    
